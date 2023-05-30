@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue{% endblock %}
+
+{% block body %}
+    <h1>Catalogue</h1>
+
+    <form action="{{ path('voiture_filter') }}" method="GET">
+        <label for="villes">Villes</label>
+        <select name="ville" id="villes">
+            <option value="toutes">Toutes</option>
+            {% for ville in villes %}
+                <option value="{{ ville }}">{{ ville }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Filtrer</button>
+    </form>
+
+    {% for voiture in voitures %}
+        <h2>{{ voiture.garage.lieu.ville }}</h2>
+        <ul>
+            <li>ref : {{ voiture.id }}</li>
+            <li>Titre : {{ voiture.titre }}</li>
+            <li>Description : {{ voiture.description }}</li>
+            <li><img src="{{ voiture.lienImage }}" alt="image de description"></img></li>
+            <li>Prix : {{ voiture.prixLocation }} €</li>
+        </ul>
+    {% else %}
+        <p>Aucun voiture n'est en vente pour le moment</p>
+    {% endfor %}
+
+{% endblock %}

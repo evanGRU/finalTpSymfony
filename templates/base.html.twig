@@ -14,6 +14,14 @@
         {% endblock %}
     </head>
     <body>
+        <nav style="display: flex; gap: 1em">
+            <a href="{{ path('app_voiture_catalogue') }}">Catalogue</a>
+            <a href="{{ path('app_voiture_index') }}">Voitures</a>
+            <a href="{{ path('app_garage_index') }}">Garages</a>
+            <a href="{{ path('app_lieu_index') }}">Lieux</a>
+            <a href="{{ path('app_critere_index') }}">Critères</a>
+            <a href="{{ path('app_user_index') }}">Users</a>
+        </nav>
         {% block body %}{% endblock %}
     </body>
 </html>
